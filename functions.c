@@ -4,7 +4,7 @@
 
 /**
  * print_char - Prints a char
- * @types: List a of arguments
+ * @types: List a of the arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: Width
@@ -167,12 +167,12 @@ int print_binary(va_list types, char buffer[],
 
 	n = va_arg(types, unsigned int);
 	m = 2147483648; /* (2 ^ 31) */
-	a[0] = n /
-		for (i = 1; i < 32; i++)
-		{
-			m /= 2;
-			a[i] = (n / m) % 2;
-		}
+	a[0] = n / m;
+	for (i = 1; i < 32; i++)
+	{
+		m /= 2;
+		a[i] = (n / m) % 2;
+	}
 	for (i = 0, sum = 0, count = 0; i < 32; i++)
 	{
 		sum += a[i];

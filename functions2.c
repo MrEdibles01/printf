@@ -67,29 +67,29 @@ int print_non_printable(va_list types, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	int i = 0, offset = 0;
-		char *str = va_arg(types, char *);
+	char *str = va_arg(types, char *);
 
-		UNUSED(flags);
-		UNUSED(width);
-		UNUSED(precision);
-		UNUSED(size);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
 
-		if (str == NULL)
-			return (write(1, "(null)", 6));
+	if (str == NULL)
+		return (write(1, "(null)", 6));
 
-		while (str[i] != '\0')
-		{
-			if (is_printable(str[i]))
-				buffer[i + offset] = str[i];
-			else
-				offset += append_hexa_code(str[i], buffer, i + offset);
+	while (str[i] != '\0')
+	{
+		if (is_printable(str[i]))
+			buffer[i + offset] = str[i];
+		else
+			offset += append_hexa_code(str[i], buffer, i + offset);
 
-			i++;
-		}
+		i++;
+	}
 
-		buffer[i + offset] = '\0';
+	buffer[i + offset] = '\0';
 
-		return (write(1, buffer, i + offset));
+	return (write(1, buffer, i + offset));
 }
 
 /************************* PRINT REVERSE *************************/
@@ -108,9 +108,9 @@ int print_reverse(va_list types, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	char *str;
-	int i, count =
+	int i, count = 0;
 
-		UNUSED(buffer);
+	UNUSED(buffer);
 	UNUSED(flags);
 	UNUSED(width);
 	UNUSED(size);
@@ -137,7 +137,7 @@ int print_reverse(va_list types, char buffer[],
 }
 /************************* PRINT A STRING IN ROT13 *************************/
 /**
- * print_rot13string - Print a string in rot13.
+ * rint_rot13string - Print a string in rot13.
  * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
@@ -167,6 +167,7 @@ int print_rot13string(va_list types, char buffer[],
 		str = "(AHYY)";
 	for (i = 0; str[i]; i++)
 	{
+
 		for (j = 0; in[j]; j++)
 		{
 			if (in[j] == str[i])
